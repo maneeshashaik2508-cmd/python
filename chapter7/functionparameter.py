@@ -71,3 +71,70 @@ def login(username, password =1234):
 
 login("Maneesha")
 login("Abeeda", 2531)
+
+
+
+# ARBITARY ARGUMENTS
+
+def num(*numbers):
+    """Sums an arbitrary number of positional arguments."""
+    return (f"Arguments packed into a tuple: {numbers}")
+
+
+# Call the function with different numbers of arguments
+numtuple1 = num(10, 20)                   # Output:- Arguments packed into a tuple: (10, 20)
+numtuple2 = num(1, 5, 10, 15, 20)         # Output:- Arguments packed into a tuple: (1, 5, 10, 15, 20)
+
+print(numtuple1)
+print(numtuple2)
+
+
+def create_profile(name, **details):
+    """Creates a profile with a required name and arbitrary details."""
+    profile = {'name': name}
+    profile.update(details)
+    return profile
+
+# Call the function with different keyword arguments
+user1 = create_profile("Maneesha", age=21, city="New York")
+# user1: {'name': 'Alice', 'age': 30, 'city': 'New York'}
+print(user1)
+
+user2 = create_profile("Abeeda", occupation="Engineer", phone="555-1234", country="USA")
+# user2: {'name': 'Bob', 'occupation': 'Engineer', 'phone': '555-1234', 'country': 'USA'}
+print(user2)
+
+# Write a Python function called calculate_average :
+# that can accept any number of scores (integers or floats) as input. 
+# The function should return the arithmetic mean (average) of those scores.
+
+def average(*num):
+    if not num:
+        return 0
+    
+    total = sum(num)
+    length = len(num)
+    return total/length
+
+result = average(20,10,20,30)
+print(result)
+
+
+def my_flexible_function(fixed_arg, *args, **kwargs):
+    
+    # 1. Fixed Argument
+    print(f"Required Argument: {fixed_arg}")
+    
+    # 2. Arbitrary Positional Arguments (*args)
+    print(f"Positional Arguments (Tuple): {args}")
+    
+    # 3. Arbitrary Keyword Arguments (**kwargs)
+    print(f"Keyword Arguments (Dict): {kwargs}")
+
+# --- Example Call ---
+my_flexible_function(
+    "Hello",            # fixed_arg
+    10, 20, 30,         # *args
+    name="Alice",       # **kwargs
+    location="Mars"     # **kwargs
+)
